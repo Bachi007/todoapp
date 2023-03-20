@@ -6,17 +6,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodointerfaceComponent } from './todointerface/todointerface.component';
 import { FooterComponent } from './footer/footer.component';
+import { DisplayusersComponent } from './displayusers/displayusers.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodointerfaceComponent,
-    FooterComponent
+    FooterComponent,
+    DisplayusersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

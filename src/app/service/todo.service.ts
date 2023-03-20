@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {todo} from '../service/todo';
 import {of} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +21,14 @@ export class TodoService {
     }
 
   ]
-  constructor() { }
+  constructor(private http:HttpClient) { }
+
+  getUsers(){
+    return  this.http.get('https://jsonplaceholder.typicode.com/users');
+  }
+
+
+
 
   viewtodo(){
     return of (this.todolist);
@@ -42,9 +50,13 @@ export class TodoService {
 
   deleteTodo(deltodo:todo){
     const index=this.todolist.findIndex((item)=>{
-      item.todoid==deltodo.todoid
+      if(item.todoid==deltodo.todoid){
+        return item.todoid;
+      }
+
     })
-    this.todolist.splice(index,1)
+    this.todolist.splice(index,1);
+    console.log(index)
   }
 
 
